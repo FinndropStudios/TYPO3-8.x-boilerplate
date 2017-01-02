@@ -1,0 +1,24 @@
+// First add variables and mixins
+@import "partials/general/_variables";
+@import "partials/general/_mixins";
+
+// Apply framework
+// Bootstrap 3
+//@import "../BowerComponents/bootstrap-sass-official/assets/stylesheets/bootstrap";
+// Bootstrap 4
+//@import "../BowerComponents/bootstrap-sass-official/assets/stylesheets/bootstrap";
+// MaterializeCSS
+//@import "../BowerComponents/bootstrap-sass-official/assets/stylesheets/bootstrap";
+
+// General Styles
+@import "partials/general/_globals";
+@import "partials/general/_typography";
+@import "partials/general/_buttons";
+@import "partials/general/_sections";
+@import "partials/general/_header";
+@import "partials/general/_footer";
+@import "partials/general/_cookie";
+@import "partials/general/_forms";
+
+// Content-element Styles
+@import "partials/content/_contentelement";

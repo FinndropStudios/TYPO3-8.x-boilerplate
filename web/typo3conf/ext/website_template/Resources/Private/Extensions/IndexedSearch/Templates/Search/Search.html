@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
+
+{namespace is=TYPO3\CMS\IndexedSearch\ViewHelpers}
+{namespace wt=Finndrop\WebsiteTemplate\ViewHelpers}
+
+<f:for each="{resultsets}" as="result">
+	<section class="intro gradient-green">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-9">
+					<p class="subhead">Ihre Suche nach "{searchParams.sword}" ergab</p>
+					<h1>{result.count} Ergebnis{f:if(condition: '{result.count} == 1', then: '', else: 'se')}</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="searchresults">
+		<div class="container">
+			<div class="row">
+				<f:render section="searchbox" arguments="{_all}" />
+
+				<f:if condition="{result.count} > 0">
+					<f:then>
+						<f:for each="{result.rows}" as="row">
+							<f:if condition="{row.isSectionHeader}">
+								<f:then>
+
+								</f:then>
+								<f:else>
+									<f:render partial="Searchresult" arguments="{row: row}" />
+								</f:else>
+							</f:if>
+						</f:for>
+					</f:then>
+					<f:else>
+
+					</f:else>
+				</f:if>
+			</div>
+			<f:if condition="{result.count} > 0">
+				<wt:pageBrowsing numberOfResults="{result.count}" maximumNumberOfResultPages="{settings.page_links}" currentPage="{searchParams.pointer}" resultsPerPage="{searchParams.numberOfResults}" />
+			</f:if>
+		</div>
+	</section>
+</f:for>
+
+<f:section name="searchbox">
+	<div class="{f:if(condition: '{result.count} > 0', then: 'col-sm-6', else: 'col-md-12')} resultsearchbox" data-mh="searchresults">
+		<div class="searchboxinline" data-mh="searchresults">
+			<br />
+			<h3>Neue Suche?</h3>
+			<f:alias map="{sword: searchParams.sword}">
+				<f:render partial="FormBox" arguments="{_all}"/>
+			</f:alias>
+		</div>
+	</div>
+</f:section>
+</html>

@@ -1,0 +1,40 @@
+body {
+  .cc_container {
+	a,
+	a:visited {
+	  color: $color-green;
+
+	  &:hover {
+		color: white;
+	  }
+	}
+
+	.cc_btn,
+	.cc_btn:visited {
+	  color: white;
+	  background-color: $color-green;
+	  border-radius: 0;
+
+	  &:hover {
+		color: $color-main;
+		background-color: white;
+	  }
+	}
+  }
+}
+
+@include desktop {
+
+}
+
+@include breakpoint(1100px) {
+
+}
+
+@include tablet {
+
+}
+
+@include smartphone {
+
+}

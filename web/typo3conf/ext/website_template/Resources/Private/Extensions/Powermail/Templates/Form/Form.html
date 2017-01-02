@@ -1,0 +1,37 @@
+{namespace vh=In2code\Powermail\ViewHelpers}
+<f:layout name="Default" />
+
+Render Powermail Form
+{form} 			All Forms with their Pages and their Fields
+{ttContentData}		All values from content element with plugin
+
+
+<f:section name="main">
+	<f:if condition="{form}">
+		<section class="powermailform">
+			<div class="container">
+				<div class="row">
+					<f:flashMessages class="powermail_message powermail_message_error" />
+				</div>
+				<div class="row">
+					<f:form
+							action="{action}"
+							name="field"
+							enctype="multipart/form-data"
+							additionalAttributes="{vh:Validation.EnableParsleyAndAjax(form:form)}"
+							addQueryString="{settings.misc.addQueryString}"
+							class="powermail_form powermail_form_{form.uid} {form.css} {settings.styles.framework.formClasses} {vh:Misc.MorestepClass(activate:settings.main.moresteps)}">
+						<f:render partial="Misc/FormError" arguments="{_all}" />
+
+						<f:for each="{form.pages}" as="page">
+							<f:render partial="Form/Page" arguments="{_all}" />
+						</f:for>
+
+						<f:form.hidden name="mail[form]" value="{form.uid}" class="powermail_form_uid" />
+						<f:render partial="Misc/HoneyPod" arguments="{form:form}" />
+					</f:form>
+				</div>
+			</div>
+		</section>
+	</f:if>
+</f:section>

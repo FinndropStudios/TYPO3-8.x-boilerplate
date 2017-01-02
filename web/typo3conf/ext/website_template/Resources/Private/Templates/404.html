@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
+
+<f:layout name="Scaffolding" />
+
+<f:section name="main">
+	<div class="website-wrap errorpage">
+		<section class="intro gradient-green">
+			<div class="container">
+				<div class="row">
+					<p class="subhead centered">{settings.text.404.subheader}</p>
+					<h1 class="centered">{settings.text.404.header}</h1>
+				</div>
+			</div>
+		</section>
+
+		<section class="pagenotfound">
+			<div class="container">
+				<div class="content">
+					<div class="textcols centered">
+						<p>
+							<f:format.html>{settings.text.404.description}</f:format.html>
+						</p>
+					</div>
+					<f:cObject typoscriptObjectPath="lib.404search" />
+				</div>
+			</div>
+		</section>
+
+		<f:render partial="Footer" section="main" arguments="{_all}" />
+	</div>
+
+	<f:render partial="Header" section="main" arguments="{_all}" />
+</f:section>
+</html>

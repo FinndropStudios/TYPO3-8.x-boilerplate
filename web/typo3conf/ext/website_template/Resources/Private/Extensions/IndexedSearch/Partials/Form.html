@@ -1,0 +1,29 @@
+	<f:if condition="{sword} === NULL">
+		<f:then>
+			<f:render partial="Searchpage" arguments="{_all}" />
+		</f:then>
+		<f:else>
+			<f:form pageUid="{settings.searchPid}" action="search" method="post" id="tx_indexedsearch" noCacheHash="true">
+				<div class="tx-indexedsearch-hidden-fields">
+					<f:form.hidden name="search[_sections]" value="0" />
+					<f:form.hidden name="search[_freeIndexUid]" id="tx_indexedsearch_freeIndexUid" value="_" />
+					<f:form.hidden name="search[pointer]" id="tx_indexedsearch_pointer" value="0" />
+					<f:form.hidden name="search[ext]" value="{searchParams.ext}" />
+					<f:form.hidden name="search[searchType]" value="{searchParams.searchType}" />
+					<f:form.hidden name="search[defaultOperand]" value="{searchParams.defaultOperand}" />
+					<f:form.hidden name="search[mediaType]" value="{searchParams.mediaType}" />
+					<f:form.hidden name="search[sortOrder]" value="{searchParams.sortOrder}" />
+					<f:form.hidden name="search[group]" value="{searchParams.group}" />
+					<f:form.hidden name="search[languageUid]" value="{searchParams.languageUid}" />
+					<f:form.hidden name="search[desc]" value="{searchParams.desc}" />
+					<f:form.hidden name="search[numberOfResults]" value="{searchParams.numberOfResults}" />
+					<f:form.hidden name="search[extendedSearch]" value="{searchParams.extendedSearch}" />
+				</div>
+
+				<f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="tx-indexedsearch-searchbox-sword form-control" placeholder="{f:translate(key: 'form.searchFor')}" />
+
+				<button type="button" class="btn btn-default" data-dismiss="modal"><f:translate key="administration.back" /></button>
+				<f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" id="tx-indexedsearch-searchbox-button-submit" class="tx-indexedsearch-searchbox-button btn btn-default" />
+			</f:form>
+		</f:else>
+	</f:if>

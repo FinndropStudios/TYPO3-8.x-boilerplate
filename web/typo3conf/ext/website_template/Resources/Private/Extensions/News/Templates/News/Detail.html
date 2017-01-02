@@ -1,0 +1,106 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+
+<f:layout name="Detail" />
+
+<!--
+	=====================
+		News/Detail.html
+-->
+
+<f:section name="content">
+	<f:if condition="{newsItem}">
+		<f:then>
+			<n:format.nothing>
+				<n:excludeDisplayedNews newsItem="{newsItem}" />
+				<f:if condition="{newsItem.alternativeTitle}">
+					<f:then>
+						<n:titleTag>
+							<f:format.htmlentitiesDecode>{newsItem.alternativeTitle}</f:format.htmlentitiesDecode>
+						</n:titleTag>
+					</f:then>
+					<f:else>
+						<n:titleTag>
+							<f:format.htmlentitiesDecode>{newsItem.title}</f:format.htmlentitiesDecode>
+						</n:titleTag>
+					</f:else>
+				</f:if>
+				<f:render partial="Detail/Opengraph" arguments="{newsItem: newsItem, settings:settings}" />
+			</n:format.nothing>
+			<section class="intro gradient-green">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-9">
+							<f:if condition="{newsItem.firstCategory}">
+								<p class="subhead">{newsItem.firstCategory.title}</p>
+							</f:if>
+							<h1>{newsItem.title}</h1>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="news">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="textcols one">
+								<f:if condition="{newsItem.contentElements}">
+									<f:cObject typoscriptObjectPath="lib.tx_news.contentElementRendering">{newsItem.contentElementIdList}</f:cObject>
+								</f:if>
+							</div>
+						</div>
+						<div class="col-sm-3 sociallinks">
+							<f:render partial="Detail/FalMediaContainer" arguments="{media: newsItem.falMedia, settings: settings, newsItem: newsItem}" />
+
+							<h4>Über den Artikel</h4>
+							<ul class="details">
+								<f:if condition="{newsItem.author}">
+									<!-- author -->
+									<li class="news-list-author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+										<i class="fa fa-pencil"></i><span itemprop="name">{newsItem.author}</span>
+									</li>
+								</f:if>
+								<li>
+									<time datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
+										<i class="fa fa-calendar"></i><f:format.date format="d.m.Y">{newsItem.datetime}</f:format.date>
+										<meta itemprop="datePublished" content="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}" />
+									</time>
+								</li>
+							</ul>
+
+							<h4>Social Media</h4>
+							<ul class="linklist">
+								<f:if condition="{settings.social.show.twitter} == 1">
+									<li><a href="{settings.social.twitter}" title="überblick bei Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+								</f:if>
+								<f:if condition="{settings.social.show.facebook} == 1">
+									<li><a href="{settings.social.facebook}" title="überblick bei facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+								</f:if>
+								<f:if condition="{settings.social.show.xing} == 1">
+									<li><a href="{settings.social.xing}" title="überblick bei Xing" target="_blank"><i class="fa fa-xing"></i></a></li>
+								</f:if>
+								<f:if condition="{settings.social.show.googleplus} == 1">
+									<li><a href="{settings.social.googleplus}" title="überblick bei Google+" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+								</f:if>
+								<f:if condition="{settings.social.show.instagram} == 1">
+									<li><a href="{settings.social.instagram}" title="überblick bei Instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
+								</f:if>
+							</ul>
+
+							<f:link.typolink parameter="{settings.pid.kontakt}" class="btn color-green btn-default buttons main-slide-button">
+								<i class="fa fa-envelope-o"></i>Fragen?
+							</f:link.typolink>
+						</div>
+					</div>
+				</div>
+			</section>
+		</f:then>
+		<f:else>
+
+		</f:else>
+	</f:if>
+</f:section>
+</html>

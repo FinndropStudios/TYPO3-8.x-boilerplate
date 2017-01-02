@@ -1,0 +1,86 @@
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="url"],
+input[type="email"],
+input[type="search"],
+input[type="number"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+  border: 1px solid $color-grey-dark;
+  border-radius: 0;
+  resize: none;
+  height: 40px;
+  width: 100%;
+  padding: 0 15px 0 15px;
+  margin: 0 0 30px 0;
+
+  &:focus {
+	outline: none;
+	border: 1px solid $color-green;
+	box-shadow: 0 0 5px $color-green;
+  }
+
+  &.parsley-error {
+	margin: 0 0 5px 0;
+	border: 1px solid $color-grey-dark;
+	box-shadow: 0 0 10px $color-grey-dark;
+
+	&:focus {
+	  border: 1px solid $color-green;
+	  box-shadow: 0 0 5px $color-green;
+	}
+  }
+}
+
+textarea {
+  padding: 5px 15px 5px 15px;
+  height: 250px;
+}
+
+.powermailform {
+  padding: 60px 0 60px 0;
+}
+
+label {
+  text-transform: uppercase;
+  color: $color-green;
+  font-weight: normal;
+}
+
+.parsley-errors-list {
+  padding: 0 0 0 15px;
+
+  .parsley-custom-error-message,
+  .parsley-required {
+	font-size: 12px;
+	height: 25px;
+
+	&:before {
+	  content: '';
+	  margin: 0 0 0 0;
+	}
+  }
+}
+
+@include desktop {
+
+}
+
+@include breakpoint(1100px) {
+
+}
+
+@include tablet {
+
+}
+
+@include smartphone {
+
+}

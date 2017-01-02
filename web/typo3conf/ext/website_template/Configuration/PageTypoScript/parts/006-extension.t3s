@@ -1,0 +1,20 @@
+###################
+#### Powermail ####
+###################
+TCEFORM {
+	tt_content {
+		CType {
+			addItems = *
+		}
+	}
+}
+
+##############
+#### News ####
+##############
+tx_news.templateLayouts {
+	1 = Allgemeine Liste
+	2 = Gesamt-Übersicht
+	99 = Footer-Liste
+}
+

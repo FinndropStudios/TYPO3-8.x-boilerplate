@@ -1,0 +1,27 @@
+##################
+#### ADMPANEL ####
+##################
+admPanel {
+    enable {
+        preview = 1
+        cache = 1
+        publish = 1
+        edit = 1
+        info = 1
+    }
+    hide = 1
+}
+
+#################
+#### TCEMAIN ####
+#################
+TCEMAIN {
+    permissions {
+        groupid = 1
+        user = show, editcontent, edit, new, delete
+        group = show, editcontent, edit, new, delete
+        everybody =
+    }
+    translateToHidden = 1
+    clearCacheCmd = all
+}

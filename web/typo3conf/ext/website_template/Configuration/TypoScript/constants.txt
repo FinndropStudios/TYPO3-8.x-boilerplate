@@ -1,0 +1,36 @@
+styles {
+	content {
+		# Enable magnificpopup
+		textmedia.linkWrap.lightboxEnabled = 1
+	}
+	templates {
+		layoutRootPath = EXT:website_template/Resources/Private/Layouts/
+		partialRootPath = EXT:website_template/Resources/Private/Partials/
+		templateRootPath = EXT:website_template/Resources/Private/Templates/
+	}
+}
+
+plugin {
+	tx_cookieconsent2 {
+		settings {
+		    # Set pid of "Datenschutz" here
+			link = 10
+		}
+		view {
+			layoutRootPath = EXT:website_template/Resources/Private/Extensions/CookieConsent2/Layouts/
+			partialRootPath = EXT:website_template/Resources/Private/Extensions/CookieConsent2/Partials/
+			templateRootPath = EXT:website_template/Resources/Private/Extensions/CookieConsent2/Templates/
+		}
+	}
+	tx_jhmagnificpopup {
+	    magnificpopup {
+	        support {
+	            # Activate magnifigpopup in ext:news
+	            tx_news = 1
+	            # Set classes magnificpopup should listen to
+	            user = .previewgallery, .gallery
+	        }
+
+	    }
+	}
+}

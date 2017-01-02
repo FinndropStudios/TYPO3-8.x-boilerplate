@@ -1,0 +1,34 @@
+{namespace vh=In2code\Powermail\ViewHelpers}
+
+<f:switch expression="{field.title}">
+	<f:case value="Vorname">
+		<div class="col-sm-12 col-md-6">
+			<f:render section="field" arguments="{_all}" />
+		</div>
+	</f:case>
+	<f:case value="Nachname">
+		<div class="col-sm-12 col-md-6">
+			<f:render section="field" arguments="{_all}" />
+		</div>
+	</f:case>
+	<f:case default="TRUE">
+		<div class="col-sm-12">
+			<f:render section="field" arguments="{_all}" />
+		</div>
+	</f:case>
+</f:switch>
+
+<f:section name="field">
+	<label for="powermail_field_{field.marker}" class="{settings.styles.framework.labelClasses}" title="{field.description}">
+		<vh:string.RawAndRemoveXss>{field.title}</vh:string.RawAndRemoveXss><f:if condition="{field.mandatory}"><span class="mandatory">*</span></f:if>
+	</label>
+
+	<f:form.textfield
+			type="{vh:Validation.FieldTypeFromValidation(field:field)}"
+			property="{field.marker}"
+			placeholder="{field.placeholder}"
+			value="{vh:Misc.PrefillField(field:field, mail:mail)}"
+			class="powermail_input {settings.styles.framework.fieldClasses} {vh:Validation.ErrorClass(field:field, class:'powermail_field_error')}"
+			additionalAttributes="{vh:Validation.ValidationDataAttribute(field:field)}"
+			id="powermail_field_{field.marker}" />
+</f:section>

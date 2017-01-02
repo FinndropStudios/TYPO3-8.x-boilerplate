@@ -1,0 +1,51 @@
+mod {
+	web_layout {
+		BackendLayouts {
+			1 {
+				title = Allgemein
+				config {
+					backend_layout {
+						colCount = 1
+						rowCount = 3
+						rows {
+							1 {
+								columns {
+									1 {
+										name = Intro
+										colPos = 1
+										//allowed = websitetemplate_KEY
+										allowed = *
+									}
+								}
+							}
+							2 {
+								columns {
+									1 {
+										name = Inhalt
+										colPos = 0
+									    //allowed = websitetemplate_KEY,list
+										allowed = *
+									}
+								}
+							}
+							3 {
+								columns {
+									1 {
+										name = Footer (wird vererbt)
+										colPos = 2
+										//allowed = list
+										allowed = *
+									}
+								}
+							}
+						}
+					}
+				}
+				icon = EXT:website_template/ext_icon.png
+			}
+		}
+	}
+	SHARED {
+		colPos_list = 0,1,2,3
+	}
+}

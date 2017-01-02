@@ -1,0 +1,4 @@
+{namespace vh=In2code\Powermail\ViewHelpers}
+<f:for each="{page.fields}" as="field">
+	<f:render partial="Form/Field/{vh:String.Upper(string:field.type)}" arguments="{field:field}" />
+</f:for>

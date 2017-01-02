@@ -1,0 +1,23 @@
+stages:
+  - build
+  - test
+
+preview:
+  stage: build
+  script:
+    - ./deploy.sh publish staging
+  only:
+    - master
+  except:
+    - tags
+
+unittests:
+  stage: test
+  script:
+    - git submodule update --init
+    - ./deploy.sh unittests update
+    - ./deploy.sh unittests run
+  only:
+    - master
+  except:
+    - tags

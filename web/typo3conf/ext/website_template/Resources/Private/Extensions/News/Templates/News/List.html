@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+
+<f:layout name="General" />
+<!--
+	=====================
+		Templates/News/List.html
+-->
+
+<f:section name="content">
+	<f:if condition="{news}">
+		<!--TYPO3SEARCH_end-->
+		<f:switch expression="{settings.templateLayout}">
+			<f:case value="1">
+				<f:render section="generalList" arguments="{_all}"/>
+			</f:case>
+			<f:case value="2">
+				<f:render section="overviewList" arguments="{_all}"/>
+			</f:case>
+			<f:case value="99">
+				<f:render section="footerList" arguments="{_all}"/>
+			</f:case>
+			<f:case default="TRUE">
+				<f:render section="generalList" arguments="{_all}"/>
+			</f:case>
+		</f:switch>
+		<!--TYPO3SEARCH_begin-->
+	</f:if>
+</f:section>
+
+<f:section name="generalList">
+	<section class="news">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h2 class="centered smaller">News-Artikel</h2>
+				</div>
+				<div class="teasers">
+					<f:for each="{news}" as="newsItem" iteration="iterator">
+						<f:render partial="List/Item" arguments="{newsItem: newsItem, settings: settings, iterator: iterator, cols: 'col-md-3'}" />
+					</f:for>
+				</div>
+			</div>
+		</div>
+	</section>
+</f:section>
+
+<f:section name="overviewList">
+	<n:widget.paginate objects="{news}" as="paginatedNews" configuration="{settings.list.paginate}" initial="{offset:settings.offset,limit:settings.limit}">
+		<f:for each="{paginatedNews}" as="newsItem" iteration="iterator">
+			<f:render partial="List/Item" arguments="{newsItem: newsItem, settings: settings, iterator: iterator, cols: 'col-md-4'}" />
+		</f:for>
+	</n:widget.paginate>
+</f:section>
+
+<f:section name="footerList">
+	<p class="subhead">Wissens-Blog</p>
+	<ul>
+		<f:for each="{news}" as="newsItem" iteration="iterator">
+			<f:render partial="List/ItemFooter" arguments="{newsItem: newsItem, settings: settings, iterator: iterator, cols: ''}" />
+		</f:for>
+	</ul>
+</f:section>
+
+</html>

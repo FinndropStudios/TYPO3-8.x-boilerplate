@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
+
+<div class="col-sm-6 col-md-3 searchteaser" data-mh="searchresults">
+	<p class="news-list-category subhead">{row.result_number}. Ergebnis:</p>
+	<h3>{row.title -> f:format.raw()}</h3>
+	<div class="textcols one">
+		<p>{row.description -> f:format.crop(maxCharacters: '{settings.results.summaryCropAfter}', respectWordBoundaries:'1') -> f:format.raw()}</p>
+	</div>
+	<f:comment>{row.path -> f:format.raw()}</f:comment>
+</div>
+</html>

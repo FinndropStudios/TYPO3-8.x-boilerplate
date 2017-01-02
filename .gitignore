@@ -1,0 +1,38 @@
+# PHPStorm Files
+/.idea
+
+# TYPO3 sources
+/web/index.php
+/web/typo3
+/web/typo3_src
+/web/typo3_src-*
+
+# Temp and uploaded files
+/web/typo3temp
+/web/uploads
+/web/fileadmin
+
+# Cache and Configuration files
+/web/typo3conf/l10n
+/web/typo3conf/deprecation*
+/web/typo3conf/LocalConfiguration.php
+/web/typo3conf/PackageStates.php
+/web/typo3conf/AdditionalConfiguration.php
+/web/typo3conf/ENABLE_INSTALL_TOOL
+/web/typo3conf/realurl_autoconf.php
+/web/typo3conf/mask.json
+
+# Extensions
+/web/typo3conf/ext/*
+!/web/typo3conf/ext/website_template
+
+# Resources
+/node_modules
+/vendor
+
+# Custom
+/web/.htaccess
+/src
+/sync
+
+/uebb.sh

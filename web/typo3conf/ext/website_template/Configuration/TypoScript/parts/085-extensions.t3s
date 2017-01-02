@@ -1,0 +1,149 @@
+####################
+#### Extensions ####
+####################
+# We need this to calculate the interval from seconds to milliseconds
+lib.math = TEXT
+lib.math {
+	current = 1
+	prioriCalc = 1
+}
+
+##############
+#### News ####
+##############
+plugin.tx_news {
+	view {
+		templateRootPath >
+		partialRootPath >
+		layoutRootPath >
+
+		templateRootPaths {
+			0 = EXT:news/Resources/Private/Templates/
+			10 = EXT:website_template/Resources/Private/Extensions/News/Templates/
+		}
+
+		partialRootPaths {
+			0 = EXT:news/Resources/Private/Partials/
+			10 = EXT:website_template/Resources/Private/Extensions/News/Partials/
+		}
+		layoutRootPaths {
+			0 = EXT:news/Resources/Private/Layouts/
+			10 = EXT:website_template/Resources/Private/Extensions/News/Layouts/
+		}
+
+		widget.GeorgRinger\News\ViewHelpers\Widget\PaginateViewHelper.templateRootPath = EXT:website_template/Resources/Private/Extensions/News/Templates/
+	}
+
+	settings {
+		displayDummyIfNoMedia = 0
+		defaultDetailPid = 12
+
+		analytics.social {
+			facebookLike = 0
+			facebookShare = 0
+			twitter = 0
+		}
+
+		detail {
+			showSocialShareButtons = 0
+			media {
+				image {
+					lightbox {
+						class = magnificpopup
+					}
+				}
+			}
+		}
+
+		link {
+			skipControllerAndAction = 1
+		}
+
+		social {
+			twitter =
+			facebook =
+			xing =
+			googleplus =
+			instagram =
+			show {
+				twitter = 1
+				facebook = 1
+				xing = 1
+				googleplus = 0
+				instagram = 1
+			}
+		}
+		pid {
+			kontakt = 5
+		}
+	}
+}
+
+lib.tx_news.contentElementRendering = RECORDS
+lib.tx_news.contentElementRendering {
+	tables = tt_content
+	source.current = 1
+	dontCheckPid = 1
+}
+
+########################
+#### Indexed Search ####
+########################
+page.config.index_enable = 1
+plugin.tx_indexedsearch {
+	features.skipDefaultArguments = 1
+	settings {
+		//searchPid = {$plugin.website_template.settings.pids.suche}
+		searchPid = 15
+		displayRules = 0
+		displayAdvancedSearchLink = 0
+		results {
+			titleCropAfter = 50
+			titleCropSignifier = ...
+			summaryCropAfter = 100
+			summaryCropSignifier = ...
+		}
+	}
+	view {
+		templateRootPath >
+		partialRootPath >
+		layoutRootPath >
+
+		templateRootPaths {
+			10 = EXT:website_template/Resources/Private/Extensions/IndexedSearch/Templates/
+		}
+		partialRootPaths {
+			10 = EXT:website_template/Resources/Private/Extensions/IndexedSearch/Partials/
+		}
+		layoutRootPaths {
+			10 = EXT:website_template/Resources/Private/Extensions/IndexedSearch/Layouts/
+		}
+	}
+	blind {
+		defOp = 1
+		results = 10
+	}
+	show {
+		advancedSearchLink = 0
+	}
+	_LOCAL_LANG {
+		de {
+			displayResults.page =
+			displayResults.previous = zurück
+			displayResults.next = vor
+			form.searchFor = Suchbegriff
+		}
+		en {
+			displayResults.page =
+			displayResults.previous = prev
+			displayResults.next = next
+			form.searchFor = Search for
+		}
+	}
+	search {
+		_DEFAULT_PI_VARS {
+			results = 10
+		}
+	}
+}
+

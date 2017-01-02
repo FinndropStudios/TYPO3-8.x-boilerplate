@@ -1,0 +1,61 @@
+{
+  "name": "Finndrop/TYPO33-8.x-boilerplate",
+  "license": "MIT",
+  "type": "project",
+  "description": "TYPO3 8.x Boilerplate (including mask & mask_export)",
+  "authors": [
+    {
+      "name": "Manuel Bachl",
+      "email": "m.bachl@finndrop.de"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://composer.typo3.org/"
+    }
+  ],
+  "require": {
+    "php": ">=7.0.0",
+    "typo3/cms": "8.5.0 as 8.2.0",
+    "helhum/typo3-console": ">=4.0.1",
+    "dmitryd/typo3-realurl": ">=2.1.5",
+    "georgringer/news": ">=5.3.1",
+    "mrohnstock/cookieconsent2": ">=0.2.2",
+    "t3monitor/t3monitoring": ">=1.01"
+  },
+  "autoload": {
+    "psr-4": {
+      "Finndrop\\WebsiteTemplate\\": "typo3conf/ext/website_template/Classes"
+    }
+  },
+  "require-dev": {
+    "mask/mask": ">=2.1.1",
+    "cpsit/mask-export": ">=0.6.0",
+    "ninecells/dev-log": ">=0.0.5"
+  },
+  "autoload-dev": {
+
+  },
+  "scripts": {
+
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev",
+  "extra": {
+    "typo3/cms": {
+      "cms-package-dir": "web/{$vendor-dir}/typo3/cms",
+      "web-dir": "web"
+    },
+    "helhum/typo3-console": {
+      "install-binary": false,
+      "active-packages": [
+        "introduction",
+        "rsaauth"
+      ]
+    }
+  },
+  "config": {
+    "secure-http": false
+  }
+}

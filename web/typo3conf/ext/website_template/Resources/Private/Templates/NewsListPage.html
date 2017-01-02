@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
+
+<f:layout name="Scaffolding" />
+
+<f:section name="main">
+	<div class="website-wrap">
+		<f:render partial="Intro" section="main" arguments="{_all}" />
+
+		<section class="news">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3">
+						<f:render partial="Sidebar" section="main" arguments="{_all}" />
+					</div>
+					<div class="col-sm-9">
+						<f:render partial="Main" section="main" arguments="{_all}" />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<f:render partial="Footer" section="main" arguments="{_all}" />
+	</div>
+
+	<f:render partial="Header" section="main" arguments="{_all}" />
+</f:section>
+</html>

@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{media}">
+	<h4>Bildergalerie</h4>
+	<ul class="row previewgallery">
+		<f:for each="{media}" as="mediaElement">
+			<li class="col-xs-4">
+				<f:if condition="{mediaElement.originalResource.type} == 2">
+					<f:render partial="Detail/FalMediaImage" arguments="{mediaElement: mediaElement, settings: settings, newsItem: newsItem}"/>
+				</f:if>
+				<f:if condition="{mediaElement.originalResource.type} == 4">
+					<f:render partial="Detail/FalMediaVideo" arguments="{mediaElement: mediaElement, settings: settings, newsItem: newsItem}"/>
+				</f:if>
+				<f:if condition="{mediaElement.originalResource.type} == 5">
+					<f:render partial="Detail/FalMediaImage" arguments="{mediaElement: mediaElement, settings: settings, newsItem: newsItem}"/>
+				</f:if>
+		</f:for>
+	</ul>
+</f:if>
+</html>

@@ -1,0 +1,29 @@
+##########################
+#### Search in navbar ####
+##########################
+lib.navsearch = USER
+lib.navsearch {
+	userFunc = tx_extbase_core_bootstrap->run
+	userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+	extensionName = IndexedSearch
+	vendorName = TYPO3\CMS
+	controller = Search
+	pluginName = Pi2
+	action = form
+
+	settings =< plugin.tx_indexedsearch.settings
+	persistence =< plugin.tx_indexedsearch.persistence
+	view =< plugin.tx_indexedsearch.view
+
+	view {
+		templateRootPaths {
+			10 = EXT:website_template/Resources/Private/Extensions/IndexedSearch/Navbar/Templates/
+		}
+		partialRootPaths {
+			10 = EXT:website_template/Resources/Private/Extensions/IndexedSearch/Navbar/Partials/
+		}
+		layoutRootPaths {
+			10 = EXT:website_template/Resources/Private/Extensions/IndexedSearch/Navbar/Layouts/
+		}
+	}
+}

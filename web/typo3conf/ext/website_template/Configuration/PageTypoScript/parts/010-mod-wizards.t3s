@@ -1,0 +1,26 @@
+mod.wizards {
+    newContentElement {
+        wizardItems {
+            common {
+                show =
+            }
+            special {
+                show =
+            }
+            forms {
+                show =
+            }
+            plugins {
+                show =
+                # just show needed plugins
+                show := addToList(news,tx_indexed_search)
+                //show := addToList(*)
+            }
+            bootstrap {
+                header = Website Elemente
+
+                # add stuff from mask_export here
+            }
+        }
+    }
+}

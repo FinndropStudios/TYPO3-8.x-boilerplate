@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
+
+<f:section name="main">
+	<div class="navigation main">
+		<ul>
+			<v:page.menu>
+				<f:for each="{menu}" as="item">
+					<li>
+						<f:link.page pageUid="{item.uid}" title="{item.linktext}">
+							{item.linktext}
+						</f:link.page>
+					</li>
+				</f:for>
+			</v:page.menu>
+			<f:cObject typoscriptObjectPath="lib.search" />
+		</ul>
+	</div>
+	<div class="social main">
+		<f:render partial="Navigation/SocialLinks" section="main" arguments="{_all}" />
+	</div>
+</f:section>
+</html>

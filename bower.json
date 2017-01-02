@@ -1,0 +1,8 @@
+{
+	"name": "website-template",
+	"version": "1.0.0",
+    "directory": "FrontendResources/BowerComponents",
+	"dependencies": {
+		"jquery": "*"
+	}
+}

@@ -1,0 +1,90 @@
+###################
+#### RTE Basis ####
+###################
+RTE {
+
+	# Default RTE configuration (all tables)
+	default {
+		# contentCSS = EXT:website_template/Resources/Public/Css/rte.min.css
+		# Markup Optionen  (Word Foramtierungen entfernen etc.)
+		enableWordClean = 1
+		removeTrailingBR = 1
+		removeComments = 1
+
+		# Default target for links
+		defaultLinkTarget = _top
+
+		# Buttons to show
+		showButtons = *
+
+		# Toolbar order
+		//toolbarOrder = formatblock, blockstyle, textstyle, linebreak, bold, italic, underline, strikethrough, bar, orderedlist, unorderedlist, bar, left, center, right, bar, line, copy, cut, paste, bar, undo, redo, removeformat, bar, link, unlink, linkcreator, bar, imageeditor, bar, fonticon, bar, insertparagraphbefore, insertparagraphafter, bar, pastetoggle, chMode, bar, linebreak, table, toggleborders, tableproperties, rowproperties, rowinsertabove, rowinsertunder, rowdelete, rowsplit, columninsertbefore, columninsertafter, columndelete, columnsplit, cellproperties, cellinsertbefore, cellinsertafter, celldelete, cellsplit, cellmerge
+		toolbarOrder = unorderedlist, bar, removeformat, bar, link, unlink, linkcreator
+
+		RTEHeightOverride = 500
+		RTEWidthOverride = 90%
+
+		# hide / show HTML tag
+		buttons.pastetoggle.setActiveOnRteOpen = 1
+		buttons.toggleborders.setActiveOnRteOpen = 1
+		buttons.textstyle.tags.span.allowedClasses >
+		buttons.textstyle.tags.REInlineTags >
+		buttons.textstyle.REInlineTags >
+		buttons.blockstyle.tags.table.allowedClasses >
+		buttons.link.dialogueWindow.width = 800
+
+		# Tables
+		disableLayoutFieldsetInTableOperations = 0
+
+		# Disable contextual menu
+		contextMenu.disabled = 1
+		showStatusBar = 1
+		removeTagsAndContents = sdfield
+		useCSS = 1
+
+		# Processing rules
+		proc {
+			transformBoldAndItalicTags = 0
+			allowedClasses < RTE.default.classesCharacter
+			overruleMode = ts_css
+			dontConvBRtoParagraph = 1
+			remapParagraphTag = p
+			allowTags = a, br, li, ul
+			denyTags >
+			keepPDIVattribs = xml:lang,class,style,align
+			allowTagsOutside >
+			allowTagsInTypolists = br, ul, li
+			dontRemoveUnknownTags_db = 1
+			preserveTables = 0
+
+			entryHTMLparser_db = 1
+			entryHTMLparser_db {
+				allowTags < RTE.default.proc.allowTags
+				denyTags >
+				htmlSpecialChars = 0
+				tags.img >
+				tags.div.allowedAttribs >
+				tags.p.allowedAttribs >
+				removeTags = center, font, o:p, sdfield, strike, u
+				keepNonMatchedTags = protect
+			}
+			HTMLparser_db {
+				noAttrib = br
+				xhtml_cleaning = 1
+			}
+			exitHTMLparser_db = 1
+			exitHTMLparser_db {
+				tags.b.remap = strong
+				tags.i.remap >
+				keepNonMatchedTags = 1
+				htmlSpecialChars = 0
+			}
+		}
+	}
+}
+
+####################################
+#### Frontend RTE configuration ####
+####################################
+RTE.default.FE >
+RTE.default.FE < RTE.default

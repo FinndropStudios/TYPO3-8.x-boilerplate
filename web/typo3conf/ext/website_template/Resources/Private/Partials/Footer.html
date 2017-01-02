@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
+
+<f:section name="main">
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 footerlogo">
+					<f:render partial="Logo" section="main" arguments="{type: 'footer'}" />
+				</div>
+				<div class="col-sm-8">
+					<p class="subhead">Kontakt</p>
+					<a href="tel:{settings.contact.phonelink}" title="Anrufen" class="contactlink">{settings.contact.phone}</a>
+					<a href="mailto:{settings.contact.email}" title="Schreiben" class="contactlink">{settings.contact.email}</a>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-sm-4">
+					<p class="subhead">Adresse</p>
+					<ul>
+						<li>
+							{settings.contact.name}<br />
+							{settings.contact.claim}
+						</li>
+						<li>
+							{settings.contact.street} {settings.contact.no}<f:if condition="{settings.contact.addition}"> | {settings.contact.addition}</f:if><br />
+							{settings.contact.zip} {settings.contact.city}
+						</li>
+					</ul>
+				</div>
+				<div class="col-sm-4 sociallinks">
+					<p class="subhead">Social Media</p>
+					<f:render partial="Navigation/SocialLinks" section="main" arguments="{_all}" />
+				</div>
+				<div class="col-sm-4 blog">
+					<f:format.raw>{contentFooter}</f:format.raw>
+				</div>
+			</div>
+			<hr />
+			<f:render partial="Navigation/MetaNavigation" section="main" arguments="{_all}" />
+		</div>
+	</footer>
+</f:section>
+</html>

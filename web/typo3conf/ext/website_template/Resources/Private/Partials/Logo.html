@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
+
+<f:section name="main">
+	<f:switch expression="{type}">
+		<f:case value="header">
+			<f:render section="headerlogo" arguments="{_all}"/>
+		</f:case>
+		<f:case value="footer">
+			<f:render section="footerlogo" arguments="{_all}"/>
+		</f:case>
+		<f:case default="TRUE">
+			<f:render section="headerlogo" arguments="{_all}"/>
+		</f:case>
+	</f:switch>
+</f:section>
+
+<f:section name="headerlogo">
+	<span class="logo">
+		<a href="/">
+			<f:image src="EXT:website_template/Resources/Public/Images/uebb-logo_schrift.svg" alt="überblick" class="img-responsive logo-nav" />
+			<f:image src="EXT:website_template/Resources/Public/Images/uebb-logo_zeichen.svg" alt="überblick" class="img-responsive logo-nav-scrolled" />
+		</a>
+	</span>
+</f:section>
+
+<f:section name="footerlogo">
+	<f:image src="EXT:website_template/Resources/Public/Images/uebb-logo.svg" alt="überblick" />
+</f:section>
+</html>

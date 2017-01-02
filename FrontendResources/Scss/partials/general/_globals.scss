@@ -1,0 +1,77 @@
+@import "_variables";
+@import "_mixins";
+
+::selection {
+  color: white;
+  background: $color-green;
+}
+
+html, body {
+  color: $color-main;
+  overflow-x: hidden;
+}
+
+html {
+  &.noscroll {
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+}
+
+textarea {
+  resize: none;
+}
+
+a,
+a:visited,
+a:hover,
+a:focus {
+  text-decoration: none;
+  @include transition(all, 0.5s);
+}
+
+.nopadding {
+  padding: 0 0 0 0;
+}
+
+.centered {
+  text-align: center;
+}
+
+.rightened {
+  text-align: right;
+}
+
+ul {
+  padding: 0 0 0 15px;
+  margin: 0 0 0 0;
+  list-style: none;
+
+  li {
+    padding: 0 0 0 0;
+    margin: 0 0 15px 0;
+
+    &:before {
+      content: '• ';
+      margin: 0 2px 0 -12px;
+      color: $color-green;
+    }
+  }
+}
+
+@include desktop {
+
+}
+
+@include breakpoint(1100px) {
+
+}
+
+@include tablet {
+
+}
+
+@include smartphone {
+
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
+
+<f:section name="main">
+	<header>
+		<div class="bordered"></div>
+		<div class="container">
+			<nav>
+				<f:render partial="Logo" section="main" arguments="{type: 'header'}" />
+				<f:render partial="Navigation/MainNavigation" section="main" arguments="{_all}" />
+
+				<span class="opennav hamburger">
+					<i class="fa fa-bars"></i>
+				</span>
+			</nav>
+		</div>
+	</header>
+
+	<f:render partial="Navigation/MobileNavigation" section="main" arguments="{_all}" />
+</f:section>
+</html>

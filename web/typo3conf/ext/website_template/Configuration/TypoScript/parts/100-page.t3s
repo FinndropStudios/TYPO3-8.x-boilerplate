@@ -1,0 +1,113 @@
+##################
+#### The Page ####
+##################
+page = PAGE
+page {
+	meta {
+		viewport = width=device-width, initial-scale=1.0, user-scalable=no
+		robots = INDEX,FOLLOW
+		keywords.field = keywords
+		description.field = description
+	}
+
+	10 = FLUIDTEMPLATE
+	10 {
+		layoutRootPath = {$styles.templates.layoutRootPath}
+		partialRootPath = {$styles.templates.partialRootPath}
+		templateRootPath = {$styles.templates.templateRootPath}
+
+        # Set backend layouts
+		file.stdWrap.cObject = CASE
+		file.stdWrap.cObject {
+			key.data = levelfield:-1, backend_layout, slide
+			key.override.field = backend_layout
+
+			default = TEXT
+			default {
+				value = EXT:website_template/Resources/Private/Templates/IndexPage.html
+			}
+
+			pagets__1 = TEXT
+			pagets__1 {
+				value = EXT:website_template/Resources/Private/Templates/IndexPage.html
+			}
+		}
+
+        # push content into columns
+		variables {
+			contentMain < styles.content.get
+			contentMain {
+				select.where = colPos=0
+			}
+
+			contentIntro < styles.content.get
+			contentIntro {
+				select.where = colPos=1
+			}
+
+			contentFooter < styles.content.get
+			contentFooter {
+				select.where = colPos=2
+				slide = -1
+			}
+
+			contentSidebar < styles.content.get
+			contentSidebar {
+				select.where = colPos=3
+			}
+		}
+	}
+
+	includeCSS {
+		bower = EXT:website_template/Resources/Public/BowerComponents/bower_combined.css
+		main = EXT:website_template/Resources/Public/Css/main.min.css
+	}
+
+	includeJSFooterlibs {
+		bower = EXT:website_template/Resources/Public/BowerComponents/bower_combined.js
+		bower.forceOnTop = 1
+	}
+
+	includeJSFooter {
+		scripts = EXT:website_template/Resources/Public/Js/scripts_combined.min.js
+	}
+}
+
+page {
+	headerData {
+		1000 = TEXT
+		1000.value (
+				<link type="text/plain" rel="author" href="https://www.DOMAIN.de/humans.txt" />
+				<link rel="apple-touch-icon" sizes="180x180" href="/typo3conf/ext/website_template/Resources/Public/Favicon/apple-touch-icon.png">
+				<link rel="icon" type="image/png" href="/typo3conf/ext/website_template/Resources/Public/Favicon/favicon-32x32.png" sizes="32x32">
+				<link rel="icon" type="image/png" href="/typo3conf/ext/website_template/Resources/Public/Favicon/favicon-16x16.png" sizes="16x16">
+				<link rel="manifest" href="/typo3conf/ext/website_template/Resources/Public/Favicon/manifest.json">
+				<link rel="mask-icon" href="/typo3conf/ext/website_template/Resources/Public/Favicon/safari-pinned-tab.svg" color="#cddb2b">
+				<link rel="shortcut icon" href="/typo3conf/ext/website_template/Resources/Public/Favicon/favicon.ico">
+				<meta name="msapplication-config" content="/typo3conf/ext/website_template/Resources/Public/Favicon/browserconfig.xml">
+				<meta name="theme-color" content="#ffffff">
+		)
+	}
+}
+
+# Add scripts only on target hosts (e.g. almost every tracking snippets)
+[globalString = ENV:HTTP_HOST = ZIELHOST]
+	page {
+		headerData {
+			2000 = TEXT
+			2000.value (
+			    # Google analytics
+				<script>
+					(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+						(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+						m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+					})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+					ga('create', 'UA-25491662-1', 'auto');
+					ga('set', 'anonymizeIp', true);
+					ga('send', 'pageview');
+				</script>
+			)
+		}
+	}
+[global]
+

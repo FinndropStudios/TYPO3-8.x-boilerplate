@@ -1,0 +1,44 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+<!--
+	=====================
+		Partials/List/Item.html
+-->
+
+<div class="col-sm-6 {cols} newsteaser" data-mh="newsteasers" itemscope="itemscope" itemtype="http://schema.org/Article">
+	<n:excludeDisplayedNews newsItem="{newsItem}"/>
+
+	<p class="date">
+		<time datetime="{f:format.date(date:newsItem.datetime, format:'Y/m/d')}">
+			<f:format.date format="d.m.Y">{newsItem.datetime}</f:format.date>
+			<meta itemprop="datePublished" content="{f:format.date(date:newsItem.datetime, format:'Y/m/d')}" />
+		</time>
+	</p>
+	<f:if condition="{newsItem.firstCategory}">
+		<f:then>
+			<p class="news-list-category subhead">{newsItem.firstCategory.title}</p>
+		</f:then>
+		<f:else>
+			<p class="news-list-category subhead">&nbsp;</p>
+		</f:else>
+	</f:if>
+	<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+		<h3 itemprop="headline">{newsItem.title}</h3>
+	</n:link>
+	<div class="textcols one">
+		<f:if condition="{newsItem.teaser}">
+			<f:then>
+				<p itemprop="description">{newsItem.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}</p>
+			</f:then>
+			<f:else>
+				<p itemprop="description">{newsItem.bodytext -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}</p>
+			</f:else>
+		</f:if>
+		<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}" class="btn color-white btn-default buttons justlink">
+			Mehr erfahren<i class="fa fa-long-arrow-right"></i>
+		</n:link>
+	</div>
+</div>
+
+</html>

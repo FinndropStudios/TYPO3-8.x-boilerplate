@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
+
+<f:section name="main">
+	<div class="mobilenavigation">
+		<div class="content centered">
+			<a href="/" class="logo">
+				<f:image src="EXT:website_template/Resources/Public/Images/uebb-logo_ue.svg" alt="überblick" class="img-responsive" />
+			</a>
+			<ul>
+				<v:page.menu>
+					<f:for each="{menu}" as="item">
+						<li>
+							<f:link.page pageUid="{item.uid}" title="{item.linktext}">
+								{item.linktext}
+							</f:link.page>
+						</li>
+					</f:for>
+				</v:page.menu>
+				<li>
+					<f:link.typolink parameter="{settings.pids.suche}">
+						<i class="fa fa-search"></i>
+					</f:link.typolink>
+				</li>
+			</ul>
+			<div class="social">
+				<f:render partial="Navigation/SocialLinks" section="main" arguments="{_all}" />
+			</div>
+			<span class="closenav">
+				<i class="fa fa-close"></i>
+			</span>
+		</div>
+	</div>
+</f:section>
+</html>

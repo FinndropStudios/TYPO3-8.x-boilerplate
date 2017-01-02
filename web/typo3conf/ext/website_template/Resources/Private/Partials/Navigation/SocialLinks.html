@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
+
+<f:section name="main">
+	<ul class="linklist">
+		<f:if condition="{settings.social.show.twitter} == 1">
+			<li><a href="{settings.social.twitter}" title="überblick bei Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+		</f:if>
+		<f:if condition="{settings.social.show.facebook} == 1">
+			<li><a href="{settings.social.facebook}" title="überblick bei facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+		</f:if>
+		<f:if condition="{settings.social.show.xing} == 1">
+			<li><a href="{settings.social.xing}" title="überblick bei Xing" target="_blank"><i class="fa fa-xing"></i></a></li>
+		</f:if>
+		<f:if condition="{settings.social.show.googleplus} == 1">
+			<li><a href="{settings.social.googleplus}" title="überblick bei Google+" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+		</f:if>
+		<f:if condition="{settings.social.show.instagram} == 1">
+			<li><a href="{settings.social.instagram}" title="überblick bei Instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
+		</f:if>
+	</ul>
+</f:section>
+</html>

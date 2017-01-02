@@ -1,0 +1,43 @@
+plugin.website_template {
+	settings {
+		pids {
+			datenschutz = 10
+			impressum = 9
+			kontakt = 5
+			suche = 15
+		}
+		contact {
+			name =
+			claim =
+			addition =
+			street =
+			no =
+			zip =
+			city =
+			email =
+			phone =
+			# phone number formatted for href="tel:"
+			phonelink =
+		}
+		social {
+			twitter =
+			facebook =
+			xing =
+			googleplus =
+			instagram =
+			show {
+				twitter = 1
+				facebook = 1
+				xing = 1
+				googleplus = 0
+				instagram = 1
+			}
+		}
+	}
+}
+
+page {
+	10 {
+		settings < plugin.website_template.settings
+	}
+}

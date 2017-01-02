@@ -1,0 +1,52 @@
+@mixin vertical-center {
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+
+@mixin transition($prop, $dur) {
+  -webkit-transition: $prop $dur ease-in-out;
+  -khtml-transition: $prop $dur ease-in-out;
+  -moz-transition: $prop $dur ease-in-out;
+  -o-transition: $prop $dur ease-in-out;
+  transition: $prop $dur ease-in-out;
+}
+
+@mixin gradient-green {
+  background: linear-gradient(to bottom,  $gradient-green-dark 0%,$gradient-green-bright 75%);
+}
+
+@mixin gradient-gold {
+  background: linear-gradient(to bottom,  $gradient-gold-dark 0%,$gradient-gold-bright 75%);
+}
+
+$desktop-width: 1200px;
+$tablet-width: 992px;
+$smartphone-width: 700px;
+
+@mixin breakpoint($breakpoint) {
+  @media (max-width: #{$breakpoint}) {
+	@content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: #{$desktop-width}) {
+	@content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet-width}) {
+	@content;
+  }
+}
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone-width}) {
+	@content;
+  }
+}
