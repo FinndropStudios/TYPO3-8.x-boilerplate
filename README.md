@@ -36,7 +36,7 @@ Run `./boil.sh firstinstall` to start the configuration of your project. Follow 
 
 - `.boil.sh unittests update` updates unittests
 - `.boil.sh unittests run` runs unittests
-- `.boil.sh publish [staging|production]` deploys on stagin/production environment (just works in webhook)
+- `.boil.sh publish [staging|production]` deploys on staging/production environment (just works through webhook)
 - `.boil.sh keygen [$homedir]` generates ssh keypair in provided folder
 
 ## ToDos
