@@ -144,13 +144,13 @@ function promptSettings {
         echo "DATABASEHOSTNAME=${DATABASEHOSTNAME}" >> ${file}
         read -r -p "Database port: " DATABASEPORT
         echo "DATABASEPORT=${DATABASEPORT}" >> ${file}
-        echo -e "${ORANGE}Path settings:${NC}"
     fi
     file=ingredients/paths.sh
     if [ -e "${file}" ]; then
         rm ${file}
     fi
     touch ${file}
+    echo -e "${ORANGE}Path settings:${NC}"
     read -r -p "Deployment path on staging environment: " STAGINGPATH
     echo "STAGINGPATHS=${STAGINGPATH}" >> ${file}
     read -r -p "Deployment path on production environment: " PRODUCTIONPATH
@@ -378,9 +378,17 @@ function firstInstall {
             installRequirements
             echo -e "${ORANGE}### STEP 9 - Generate ssh key for deployment ###${NC}"
             generateSshKey -v
-            echo -e "${GREEN}### DONE - TYPO3 initial setup finished ###${NC}"
             rm ingredients/status.sh
             echo "INSTALLED=true" >> ingredients/status.sh
+            echo -e "${GREEN}### DONE - TYPO3 initial setup finished ###${NC}"
+            echo -e ""
+            echo -e "TYPO3 backend login:"
+            echo -e ""
+            echo -e "Username: ${ORANGE}admin${NC}"
+            echo -e "Password: ${ORANGE}2!er_/g8#uz34.2${NC}"
+            echo -e ""
+            echo -e "${GREEN}Have fun!${NC}"
+            echo -e ""
             ;;
         *)
             ;;
