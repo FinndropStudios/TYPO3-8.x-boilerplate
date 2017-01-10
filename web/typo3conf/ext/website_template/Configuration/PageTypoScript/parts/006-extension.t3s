@@ -1,6 +1,6 @@
-###################
-#### Powermail ####
-###################
+#
+# Powermail
+#
 TCEFORM {
 	tt_content {
 		CType {
@@ -9,9 +9,9 @@ TCEFORM {
 	}
 }
 
-##############
-#### News ####
-##############
+#
+# News
+#
 tx_news.templateLayouts {
 	1 = Allgemeine Liste
 	2 = Gesamt-Übersicht

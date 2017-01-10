@@ -1,6 +1,6 @@
-###################
-#### RTE Basis ####
-###################
+#
+# RTE Basis
+#
 RTE {
 
 	# Default RTE configuration (all tables)
@@ -83,8 +83,8 @@ RTE {
 	}
 }
 
-####################################
-#### Frontend RTE configuration ####
-####################################
+#
+# Frontend RTE configuration
+#
 RTE.default.FE >
 RTE.default.FE < RTE.default

@@ -260,16 +260,6 @@ function installLanguages {
     echo -e "Installing german"
     ./vendor/bin/typo3cms language:update de
     echo -e "${GREEN}Installed german${NC}"
-    read -r -p "Do you want to install english language pack? [y/N] " response
-    case ${response} in
-        [yY][eE][sS]|[yY])
-            echo -e "Installing english"
-            ./vendor/bin/typo3cms language:update en
-            echo -e "${GREEN}Installed english${NC}"
-            ;;
-        *)
-            ;;
-    esac
     read -r -p "Do you want to install any further languages? [y/N] " response
     case ${response} in
         [yY][eE][sS]|[yY])
@@ -297,8 +287,8 @@ function checkCommand {
 # check general dev commands
 #
 function checkDevCommands {
-    checkCommand "npm";
-    checkCommand "bower";
+    checkCommand "npm"
+    checkCommand "bower"
     checkCommand "gulp"
 }
 
@@ -306,7 +296,6 @@ function checkDevCommands {
 # select desired packages
 #
 function setPackages {
-    bootstrap-sass-official
     echo -e "${ORANGE}Choose your css framework:${NC}"
     echo -e "  1)  Bootstrap 3"
     echo -e "  2)  Bootstrap 4"
@@ -337,10 +326,8 @@ function setPackages {
 #
 function installRequirements {
     checkDevCommands
-    cd web
     npm install
     bower install
-    cd ..
 }
 
 #
@@ -395,20 +382,6 @@ function publish {
 }
 
 #
-# update unit tests
-#
-function updateUnitTests {
-    exit 1
-}
-
-#
-# run unit tests
-#
-function runUnitTests {
-    exit 1
-}
-
-#
 # generate SSH key for the user which runs php
 #
 function generateSshKey {
@@ -436,18 +409,35 @@ function main {
             firstInstall
             ;;
         "unittests")
+            echo -e "${RED}UnitTests are not implemented yet${NC}"
+            exit 1
+
+            local UNITTESTS_START_DIRECTORY=`pwd`
+            source ingredients/spices/unittests.sh
+            unitTestsCheck
+            unitTestsSwitchToBasePath
             case "$2" in
+                "prepare")
+                    unitTestsPrepare
+                    ;;
+                "install")
+                    unitTestsInstall
+                    ;;
                 "update")
-                    updateUnitTests
+                    unitTestsUpdate
                     ;;
                 "run")
-                    runUnitTests
+                    unitTestsRun
                     ;;
                 *)
-                    echo -e "USAGE: ./boil.sh unittests [update|run]"
+                    echo -e "USAGE: ./boil.sh unittests [prepare|install|update|run]"
             esac
+            cd ${UNITTESTS_START_DIRECTORY}
             ;;
         "publish")
+            echo -e "${RED}Deployment not implemented yet${NC}"
+            exit 1
+
             case "$2" in
                 "staging")
                     publish $2
@@ -468,7 +458,7 @@ function main {
             ;;
         *)
             echo -e "USAGE: ./boil.sh firstinstall"
-            echo -e "OR:    ./boil.sh unittests [update|run]"
+            echo -e "OR:    ./boil.sh unittests [prepare|install|update|run]"
             echo -e "OR:    ./boil.sh publish [staging|production]"
             echo -e "OR:    ./boil.sh keygen [\$homedir]"
             ;;
@@ -479,5 +469,5 @@ function main {
 # run script
 #
 # $1 = task (firstinstall, unittests, publish, keygen)
-# $2 = environment // subtask (empty (if firstinstall), staging, production, update, run, homedir)
+# $2 = environment // subtask (empty (if firstinstall), staging, production, prepare, install, update, run, homedir)
 main $1 $2;

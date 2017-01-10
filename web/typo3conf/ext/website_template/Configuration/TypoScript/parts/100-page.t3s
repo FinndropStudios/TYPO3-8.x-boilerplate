@@ -1,6 +1,6 @@
-##################
-#### The Page ####
-##################
+#
+# The Page
+#
 page = PAGE
 page {
 	meta {
@@ -77,7 +77,7 @@ page {
 	headerData {
 		1000 = TEXT
 		1000.value (
-				<link type="text/plain" rel="author" href="https://www.DOMAIN.de/humans.txt" />
+				<link type="text/plain" rel="author" href="https://{$targetHost}/humans.txt" />
 				<link rel="apple-touch-icon" sizes="180x180" href="/typo3conf/ext/website_template/Resources/Public/Favicon/apple-touch-icon.png">
 				<link rel="icon" type="image/png" href="/typo3conf/ext/website_template/Resources/Public/Favicon/favicon-32x32.png" sizes="32x32">
 				<link rel="icon" type="image/png" href="/typo3conf/ext/website_template/Resources/Public/Favicon/favicon-16x16.png" sizes="16x16">
@@ -91,7 +91,7 @@ page {
 }
 
 # Add scripts only on target hosts (e.g. almost every tracking snippets)
-[globalString = ENV:HTTP_HOST = ZIELHOST]
+[globalString = ENV:HTTP_HOST = {$targetHost}] && [globalString = {$googleAnalyticsCode} = \.+\]
 	page {
 		headerData {
 			2000 = TEXT
@@ -102,7 +102,7 @@ page {
 						(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 						m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 					})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-					ga('create', 'UA-25491662-1', 'auto');
+					ga('create', '{$googleAnalyticsCode}', 'auto');
 					ga('set', 'anonymizeIp', true);
 					ga('send', 'pageview');
 				</script>

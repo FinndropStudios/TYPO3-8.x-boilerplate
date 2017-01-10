@@ -1,6 +1,6 @@
-####################
-#### Extensions ####
-####################
+#
+# Extensions
+#
 # We need this to calculate the interval from seconds to milliseconds
 lib.math = TEXT
 lib.math {
@@ -8,9 +8,9 @@ lib.math {
 	prioriCalc = 1
 }
 
-##############
-#### News ####
-##############
+#
+# News
+#
 plugin.tx_news {
 	view {
 		templateRootPath >

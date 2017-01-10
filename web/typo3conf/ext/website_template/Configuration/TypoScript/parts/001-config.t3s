@@ -1,6 +1,6 @@
-########################
-#### General config ####
-########################
+#
+# General config
+#
 config {
 	doctype = html5
 	removeDefaultJS = 1
@@ -31,9 +31,9 @@ config {
 	absRefPrefix = /
 }
 
-########################
-#### IE < 9 support ####
-########################
+#
+# IE < 9 support
+#
 [version = <8][browser = msie8]
     page.includeJSlibs {
         html5Js = //html5shiv.googlecode.com/svn/trunk/html5.js
@@ -44,9 +44,9 @@ config {
 [global]
 
 
-###################
-#### Languages ####
-###################
+#
+# Languages
+#
 config.sys_language_uid = 0
 config.language = de
 config.htmlTag_langKey = de
@@ -58,3 +58,4 @@ config.locale_all = de_DE.UTF8
     config.language = en
     config.locale_all = en_UK.UTF8
 [global]
+

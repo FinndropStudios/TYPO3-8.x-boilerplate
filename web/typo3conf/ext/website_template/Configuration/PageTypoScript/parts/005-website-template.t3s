@@ -1,6 +1,6 @@
-##################
-#### ADMPANEL ####
-##################
+#
+# AdmPanel
+#
 admPanel {
     enable {
         preview = 1
@@ -12,9 +12,9 @@ admPanel {
     hide = 1
 }
 
-#################
-#### TCEMAIN ####
-#################
+#
+# TCEMAIN
+#
 TCEMAIN {
     permissions {
         groupid = 1
