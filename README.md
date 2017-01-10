@@ -48,3 +48,9 @@ Run `./boil.sh firstinstall` to start the configuration of your project. Follow 
 ## Perfect fit:
 
 This boilerplate integrates perfectly with our [TYPO3 docker boilerplate](https://github.com/FinndropStudios/TYPO3-docker-boilerplate).
+
+## Credits
+
+
+Thanks for your support, ideas and issues.
+- [Helmut Hummel](https://github.com/helhum)

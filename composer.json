@@ -21,7 +21,6 @@
     "helhum/typo3-console": "^4.0",
     "dmitryd/typo3-realurl": "^2.1",
     "georgringer/news": "^5.3",
-    "mrohnstock/cookieconsent2": "^0.2",
     "t3monitor/t3monitoring": "^1"
   },
   "autoload": {
@@ -44,12 +43,11 @@
   "minimum-stability": "dev",
   "extra": {
     "typo3/cms": {
-      "cms-package-dir": "web/{$vendor-dir}/typo3/cms",
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
       "web-dir": "web"
     },
     "helhum/typo3-console": {
-      "install-binary": true,
       "install-extension-dummy": false
     }
-  },
+  }
 }
