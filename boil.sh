@@ -206,8 +206,12 @@ function typo3Install {
 # importing database with general data (including admin user and some default pages)
 #
 function importDatabase {
+    echo -e "Cleaning up database"
+    mysqldump -u ${DATABASEUSERNAME} -h ${DATABASEHOSTNAME} -p${DATABASEUSERPASSWORD} --no-data ${DATABASENAME} | grep ^DROP > drop.sql
+    mysql -u ${DATABASEUSERNAME} -h ${DATABASEHOSTNAME} -p${DATABASEUSERPASSWORD} ${DATABASENAME} < drop.sql
+    rm drop.sql
     echo -e "Importing initial data to database"
-    mysql -u ${DATABASEUSERNAME} -h ${DATABASEHOSTNAME} -p ${DATABASEUSERPASSWORD} ${DATABASENAME} < initialdump.sql
+    mysql -u ${DATABASEUSERNAME} -h ${DATABASEHOSTNAME} -p${DATABASEUSERPASSWORD} ${DATABASENAME} < initialdump.sql
     if [ "$?" -eq 0 ]; then
         echo -e "${GREEN}Data successfully imported${NC}"
     else
