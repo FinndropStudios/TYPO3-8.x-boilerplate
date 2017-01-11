@@ -224,7 +224,7 @@ function typo3Install {
             echo -e "Starting TYPO3 setup routine using your provided settings"
             echo -e "Deleting database"
             mysql -u ${DATABASEUSERNAME} -h ${DATABASEHOSTNAME} -p${DATABASEUSERPASSWORD} <<< "DROP DATABASE typo3;"
-            ./vendor/bin/typo3cms install:setup --non-interactive --force --database-user-name=${DATABASEUSERNAME} --database-user-password=${DATABASEUSERPASSWORD} --database-host-name=${DATABASEHOSTNAME} --database-port=${DATABASEPORT} --database-name=${DATABASENAME} --admin-user-name=admin --admin-password='2!er_/g8#uz34.2' --site-name='New TYPO3 Site'
+            ./vendor/bin/typo3cms install:setup --non-interactive --force --database-user-name=${DATABASEUSERNAME} --database-user-password=${DATABASEUSERPASSWORD} --database-host-name=${DATABASEHOSTNAME} --database-port=${DATABASEPORT} --database-name=${DATABASENAME} --admin-user-name='admin' --admin-password='2!er_/g8#uz34.2' --site-name='New TYPO3 Site'
             echo -e "${GREEN}TYPO3 successfully installed${NC}"
             importDatabase
             activateExtensions

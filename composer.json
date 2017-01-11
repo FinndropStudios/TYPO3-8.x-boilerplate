@@ -39,7 +39,7 @@
   "scripts": {
 
   },
-  "prefer-stable": true,
+  "prefer-stable": false,
   "minimum-stability": "dev",
   "extra": {
     "typo3/cms": {
