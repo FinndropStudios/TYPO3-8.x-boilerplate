@@ -406,17 +406,16 @@ function publish {
 # generate SSH key for the user which runs php
 #
 function generateSshKey {
-    if [[ $1 = "-v" ]]; then
-        read -r -p $'\e[33mSet the home directory of user running php (without trailing slash):\e[0m ' SSHKEYUSERHOME
+    if [ -z "$2" ]; then
+        read -r -p $'\e[33mSet the php running user (e.g. "www-data"):\e[0m ' SSHKEYUSERHOME
     else
         echo -e "###############################################################################"
         echo -e "${GREEN}ssh-key generator!${NC}"
         echo -e "###############################################################################"
         SSHKEYUSERHOME=$1
     fi
-    php ingredients/php/ssh-keygen.php -- ${SSHKEYUSERHOME}
-    echo -e "${GREEN}Use this key for deployment (set it in GitHub, GitLab, ...):${NC}"
-    cat ${SSHKEYUSERHOME}/id_rsa.pub
+    php ingredients/php/ssh-keygen.php ${SSHKEYUSERHOME}
+    cat ssh-keys/${SSHKEYUSERHOME}/.ssh/id_rsa.pub
     echo -e ""
 }
 
@@ -473,11 +472,7 @@ function main {
             esac
             ;;
         "keygen")
-            if [ -z "$2" ]; then
-                echo -e "USAGE: ./boil.sh keygen [\$homedir]"
-            else
-                generateSshKey $2
-            fi
+            generateSshKey $2
             ;;
         *)
             echo -e "USAGE: ./boil.sh firstinstall"
