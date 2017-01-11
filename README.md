@@ -6,10 +6,10 @@ This is a TYPO3 8.x boilerplate which will be configured through a step-by-step 
 
 ## Features
 
-- Fresh install of blank TYPO3 8.x instance (composer mode, also installs composer locally if not already installed globally)
-- Unittesting (extendable)
-- Deployment (through webhook)
-- ssh keygen (php-script w/o need of root privilegues)
+- [x] Fresh install of blank TYPO3 8.x instance (composer mode, also installs composer locally if not already installed globally)
+- [ ] Unittesting (extendable)
+- [ ] Deployment (deployer.php, maybe others)
+- [x] ssh keygen (php-script w/o need of root privilegues)
 
 ## Default extensions
 
@@ -34,8 +34,12 @@ Run `./boil.sh firstinstall` to start the configuration of your project. Follow 
 
 ## Command list
 
+<!---
+- `.boil.sh unittests prepare` prepares unittests
+- `.boil.sh unittests install` installs unittests
 - `.boil.sh unittests update` updates unittests
 - `.boil.sh unittests run` runs unittests
+-->
 - `.boil.sh publish [staging|production]` deploys on staging/production environment (just works through webhook)
 - `.boil.sh keygen` generates ssh keypair
 
@@ -52,7 +56,7 @@ This feature creates an ssh  keypair through php, so there's no need to have `sh
 ## ToDos
 
 - [ ] Add unittesting
-- [ ] Add deployment
+- [ ] Add deployment (deployer.php, maybe others)
 - [ ] Testing
 
 ## Perfect fit:
