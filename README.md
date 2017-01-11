@@ -32,7 +32,14 @@ Just download and unzip or clone this repository. Open your favourite Terminal a
 
 Run `./boil.sh firstinstall` to start the configuration of your project. Follow the steps and you're done and you're fresh TYPO3 instance is up and running.
 
-## Feture usage
+## Command list
+
+- `.boil.sh unittests update` updates unittests
+- `.boil.sh unittests run` runs unittests
+- `.boil.sh publish [staging|production]` deploys on staging/production environment (just works through webhook)
+- `.boil.sh keygen` generates ssh keypair
+
+## Feature usage
 
 ### ssh keygen
 
@@ -42,25 +49,17 @@ Follow the instructions on screen.
 This feature may be needed when using a webhook (GitHub, Gitlab, ...) for deployment to set up an ssh key for the user which is running php.
 This feature creates an ssh  keypair through php, so there's no need to have `sh-keygen` installed on your environment.
 
-## Other commands
-
-- `.boil.sh unittests update` updates unittests
-- `.boil.sh unittests run` runs unittests
-- `.boil.sh publish [staging|production]` deploys on staging/production environment (just works through webhook)
-- `.boil.sh keygen [$homedir]` generates ssh keypair in provided folder
-
 ## ToDos
 
-- Add unittesting
-- Add deployment
-- Testing
+- [ ] Add unittesting
+- [ ] Add deployment
+- [ ] Testing
 
 ## Perfect fit:
 
 This boilerplate integrates perfectly with our [TYPO3 docker boilerplate](https://github.com/FinndropStudios/TYPO3-docker-boilerplate).
 
 ## Credits
-
 
 Thanks for your support, ideas and issues.
 - [Helmut Hummel](https://github.com/helhum)
