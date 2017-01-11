@@ -32,6 +32,16 @@ Just download and unzip or clone this repository. Open your favourite Terminal a
 
 Run `./boil.sh firstinstall` to start the configuration of your project. Follow the steps and you're done and you're fresh TYPO3 instance is up and running.
 
+## Feture usage
+
+### ssh keygen
+
+ssh to your server/docker container/... and run `./boil.sh keygen`. 
+Follow the instructions on screen.
+
+This feature may be needed when using a webhook (GitHub, Gitlab, ...) for deployment to set up an ssh key for the user which is running php.
+This feature creates an ssh  keypair through php, so there's no need to have `sh-keygen` installed on your environment.
+
 ## Other commands
 
 - `.boil.sh unittests update` updates unittests

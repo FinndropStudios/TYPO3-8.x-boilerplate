@@ -376,8 +376,6 @@ function firstInstall {
             setPackages
             echo -e "${ORANGE}### STEP 8 - NPM/Bower install ###${NC}"
             installRequirements
-            echo -e "${ORANGE}### STEP 9 - Generate ssh key for deployment ###${NC}"
-            generateSshKey -v
             rm ingredients/status.sh
             echo "INSTALLED=true" >> ingredients/status.sh
             echo -e "${GREEN}### DONE - TYPO3 initial setup finished ###${NC}"
